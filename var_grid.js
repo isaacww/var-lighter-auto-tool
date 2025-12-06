@@ -565,7 +565,7 @@ class BTCAutoTrading {
         const MAX_MULTIPLIER = cfg.MAX_MULTIPLIER;       
         
         // 添加安全检查和默认值
-        const safeOrderSize = Math.max(orderSize, 0.0001);  // 防止除零
+        const safeOrderSize = Math.max(orderSize, 0.000001);  // 防止除零
         const positionMultiplier = Math.abs(positionBTC) / safeOrderSize;
         
         // 基础买卖比例
@@ -574,11 +574,14 @@ class BTCAutoTrading {
         
         let finalSellRatio = baseSellRatio;
         let finalBuyRatio = baseBuyRatio;
+        let isAtLimit = false;
         
         console.log(`当前持仓: ${positionBTC.toFixed(4)} BTC | 相对于开仓大小的倍数: ${positionMultiplier.toFixed(1)}x`);
-        
+        console.log(`positionBTC: ${positionBTC}, abs: ${Math.abs(positionBTC)}, orderSize: ${orderSize}, safeOrderSize: ${safeOrderSize}`);
+        console.log(`计算过程: ${Math.abs(positionBTC)} / ${safeOrderSize} = ${Math.abs(positionBTC) / safeOrderSize}`);
         // 逻辑1：持仓达到上限时，完全停止同方向开单
         if (positionMultiplier >= MAX_MULTIPLIER) {
+            isAtLimit = true;
             if (positionBTC > 0) {
                 // 多单达到上限，完全不开多单
                 console.log(`⚠️ 多单已达上限(${MAX_MULTIPLIER}x)，停止开多单`);
@@ -611,9 +614,15 @@ class BTCAutoTrading {
             }
         }
         
-        // 确保比例在合理范围内（10%-90%之间）
-        finalBuyRatio = Math.max(0.1, Math.min(0.9, finalBuyRatio));
-        finalSellRatio = Math.max(0.1, Math.min(0.9, finalSellRatio));
+        // 范围限制：根据是否达到上限决定
+        if (!isAtLimit) {
+            // 未达到上限：保持10%-90%范围
+            finalBuyRatio = Math.max(0.1, Math.min(0.9, finalBuyRatio));
+            finalSellRatio = Math.max(0.1, Math.min(0.9, finalSellRatio));
+        }
+        // 达到上限时：保持设置的极端值（0或1）
+
+        console.log(`最终比例: 卖单 ${(finalSellRatio*100).toFixed(0)}% / 买单 ${(finalBuyRatio*100).toFixed(0)}%`);
         
         // 计算买卖订单数量
         const sellCount = Math.round(cfg.TOTAL_ORDERS * finalSellRatio);
