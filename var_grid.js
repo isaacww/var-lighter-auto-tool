@@ -337,7 +337,9 @@ class BTCAutoTrading {
 
         // 1. 检查风控冷却状态
         if (this.checkRiskCooldown()) {
-            console.log(`⏳ 风控冷却中，跳过交易周期`);
+            await this.simpleClosePosition();
+            await this.delay(500);
+            await this.cancelAllOrder();
             return; // 在冷却中，跳过整个交易周期
         }
 
