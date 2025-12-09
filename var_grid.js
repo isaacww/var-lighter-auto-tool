@@ -113,6 +113,18 @@ class BTCAutoTrading {
         }
     }
 
+    async getCurrentPrice() {
+        const askEl = document.querySelector('span[data-testid="ask-price-display"]');
+        const bidEl = document.querySelector('span[data-testid="bid-price-display"]');
+        
+        if (!askEl || !bidEl) return null;
+        
+        const askPrice = parseFloat(askEl.textContent.replace(/[$,]/g, ''));
+        const bidPrice = parseFloat(bidEl.textContent.replace(/[$,]/g, ''));
+        
+        return (askPrice + bidPrice) / 2;
+    }
+
     findPendingOrdersTab() {
         return Array.from(document.querySelectorAll('span')).find(el =>
             BTCAutoTrading.TEXT_MATCH.PENDING_ORDERS.some(t => el.textContent.includes(t))
@@ -441,6 +453,22 @@ class BTCAutoTrading {
             if (result.cancelOrders && result.cancelOrders.length > 0) {
                 console.log(`开始撤销 ${result.cancelOrders.length} 个远单...`);
                 for (const order of result.cancelOrders) {
+                    // 检查是否需要跳过撤单（如果价格接近当前价格）
+                    const currentPrice = await this.getCurrentPrice();
+                    if (currentPrice && order.price) {
+                        // 修复这里：使用 order.price 而不是 price
+                        const targetNum = Number(String(order.price).replace(/[^0-9.]/g, ''));
+                        if (targetNum) {
+                            const cfg = BTCAutoTrading.GRID_STRATEGY_CONFIG;  // 添加这行定义 cfg
+                            const priceDiff = Math.abs(targetNum - currentPrice);
+                            const isNearCurrentPrice = priceDiff <= cfg.BASE_PRICE_INTERVAL * (cfg.MAX_MULTIPLIER/4);
+                            
+                            if (isNearCurrentPrice) {
+                                console.log(`跳过撤单：价格接近当前价格 (差值: ${priceDiff.toFixed(1)})`);
+                                continue;  // 跳过这个订单，不撤单
+                            }
+                        }
+                    }
                     await this.orderManager.cancelByPrice(order.price);
                     await this.delay(500);
                 }
